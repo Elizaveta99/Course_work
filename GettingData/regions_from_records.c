@@ -183,7 +183,7 @@ int main(int argc, char * argv[])
 
 	printf("\nreg_amount = %d\n", cnt_reg);
 
-	int new_id = 7;                                    // с этими данными ещё не вставляла!! - запись 103
+	int new_id = 1725;                                    // с этими данными ещё не вставляла!! - запись 112
 
 	for (int i = 0; i < cnt_reg; i++)
 	{
@@ -192,7 +192,7 @@ int main(int argc, char * argv[])
 			sql = malloc(500);
 			new_id++;
 			//printf("BeatType_id = %d new_id = %d\n", BeatType_id, new_id); // 
-			sprintf(sql, "INSERT INTO Regions VALUES(%d, %d, %d, %d, %d)", new_id, start[i], finish[i], regtype_id[i], 5);
+			sprintf(sql, "INSERT INTO Regions VALUES(%d, %d, %d, %d, %d)", new_id, start[i], finish[i], regtype_id[i], 49);
 			rc = sqlite3_exec(db, sql, 0, 0, &zErrMsg);
 			if (rc != SQLITE_OK) {
 				fprintf(stderr, "Failed to insert data\n");

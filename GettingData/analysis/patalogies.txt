@@ -1,0 +1,61 @@
+102(3), 104(6), 107(9), 217(38) - почти всё P, f биты - выкинуть
+
+115(16), 122(22) - only N beats, N rhythms
+
+оставить только те ритмы из битов, где run of beats есть, isolated не надо? 
+	(i - isolated; c - in couplet, r - in urn)
+A, V - выкинуть, где не последовательно? (или только А, их меньше?)
+
+ритмы (+ ритмы из битов)
+only (N : 100(1), 101(2), 103(5), 112(13), 113(14), 115(16), 117(18), 121(21), 122(22), 123(23)	
+105(7) -  (N(1), (V beats(PVC)(18) - i, 
+106(8) -  (N(1), (B(11), (T(12), (VT(14), (V(18) - i, c, r
+108(10) - (N(1), (V(18) - i, c, (A(19) - i
+109(11) - (LBBB(L beats)(16), (V(18) -i
+111(12) - (LBBB(16)
+114(15) - (N(1), (SVTA(6), (V(18) - i, c, (J(21), (A(19) - i, r
+116(17) - (N(1), (V(18) - i, c
+118(19) - (RBBB(17), (A(19) - i, c, (V(18) - i 
+119(20) - (N(1), (V(18) - i, (B(11), (T(12)
+124(24) - (N(1), (T(12), (IVR(13), (NOD(10), (V(18) - i, r, (A(19) - i, r, (j(20), (J(21)
+200(25) - (N(1), (B(11), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+201(26) - (N(1), (SVTA(6), (AFIB(8), (NOD(10), (T(12), (A(19) - i, c, r, (V(18) - i, (j(20), (J(21)
+202(27) - (N(1), (AFL(7), (AFIB(8), (A(19) - i, c, r, (V(18) - i
+203(28) - (N(1), (AFL(7), (AFIB(8), (T(12), (VT(14), (A(19) - i, (V(18) - i, c, r
+205(29) - (N(1), (VT(14), (A(19) - i, (V(18) - i, r
+207(30) - (LBBB(16), (RBBB(17), (SVTA(6), (B(11), (IVR(13), (VT(14), (VFL(15) - ?(только 1), (A(19) - i, c, r, (V(18)- i, c, r
+208(31) - (N(1), (T(12), (V(18) - i, c, r, (A(19) - i
+209(32) - (N(1), (SVTA(6), (A(19) - i, c, r
+210(33) - (AFIB(8), (B(11), (T(12), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+212(34) - (N(1), (RBBB(17)
+213(35) - (N(1), (B(11), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+214(36) - (LBBB(16), (T(12), (VT(14), (V(18) - i, c, r
+215(37) - (N(1), (VT(14), (V(18) - i, c, r, (A(19) - i
+219(39) - (N(1), (AFIB(8), (B(11), (T(12), (A(19) - i, (V(18) - i
+220(40) - (N(1), (SVTA(6), (A(19) - i, c, r
+221(41) - (AFIB(8), (B(11), (T(12), (VT(14), (V(18) - i, c, r
+222(42) - (N(1), (AB(5), (SVTA(6), (AFL(7), (AFIB(8), (NOD(10), (A(19) - i, c, r, (j(20), (J(21)
+223(43) - (N(1), (B(11), (T(12), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+228(44) - (N(1), (B(11), (V(18) - i, c, (A(19) - i
+230(45) - (N(1), (PREX(4) - ?(только 1)
+231(46) - (N(1), (RBBB(17), (BII(3) - ?(только 1), (V(18) - c
+232(47) - (RBBB(17) , (A(19) - i, c, r, (SBR(2)
+233(48) - (N(1), (B(11), (T(12), (VT(14), (A(19) - i, (V(18) - i, c, r
+234(49) - (N(1), (SVTA(6), (V(18) - i, (J(21)
+
+classes : 1 - N(Normal sinus rhythm)
+	  2 - LBBB(Normal sinus rhythm with left bundle branch block)
+ 	  3 - RBBB(Normal sinus rhythm with right bundle branch block)
+	  4 - B(Ventricular bigeminy)
+	  5 - T(Ventricular trigeminy)
+	  6 - VT(Ventricular tachycardia)
+	  7 - SVTA(Supraventricular tachyarrhythmia)
+	  8 - AFIB(Atrial fibrillation)
+	  9 - AFL(Atrial flutter)
+	  10 - NOD(Nodal (A-V junctional) rhythm)
+	  11 - IVR(Idioventricular rhythm)
+// ??
+	  12 - A(Atrial premature beat) - APC
+	  13 - V(Premature ventricular contraction) - PVC
+	  14 - j(Nodal (junctional) escape beat) - NESC
+	  15 - J(Nodal (junctional) premature beat) - NPC

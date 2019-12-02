@@ -48,6 +48,8 @@ int main(int argc, char * argv[])
 	int finish_prev = -1;
 
 	int cnt = 0, cntN = 0;
+
+	int flagBegin = -1;
 	
 	while (getann(0, &annot) == 0)
 	{
@@ -55,12 +57,14 @@ int main(int argc, char * argv[])
 
 		char *rhythm;
 		rhythm = malloc(50);
-		sprintf(rhythm, annot.aux);		
+		//sprintf(rhythm, annot.aux);	
+		sprintf(rhythm, annstr(annot.anntyp));
 
-		//printf("annot.aux = %s!\n rhythm = %s!\n rhythm_size = %d\n beat_type = %s\n sample(time) = %d\n", annot.aux, rhythm, strlen(rhythm), annstr(annot.anntyp), annot.time);
+		printf("annot.aux = %s!\n rhythm = %s!\n rhythm_size = %d\n beat_type = %s\n sample(time) = %d\n", annot.aux, rhythm, strlen(rhythm), annstr(annot.anntyp), annot.time);
 
-		if (strcmp(rhythm, "") != 0)
+		if (strcmp(rhythm, "L") == 0 && flagBegin == -1) // (+RBBB, +V if there are in this record)
 		{
+			flagBegin = 1;
 	
 			//sql = malloc(500);
 			//sprintf(sql, "SELECT RegionType_id FROM RegionType WHERE region_type = ?");
@@ -135,7 +139,17 @@ int main(int argc, char * argv[])
 			printf("annot.aux = %s!\n rhythm = %s!\n rhythm_size = %d\n beat_type = %s\n sample(time) = %d\n", annot.aux, rhythm, strlen(rhythm), annstr(annot.anntyp), annot.time);
 
 		}
-		else finish_prev = annot.time;
+		else
+			if (strcmp(rhythm, "L") == 0 && flagBegin != -1)
+			{
+				finish_prev = annot.time;
+			}
+			else
+			if (strcmp(rhythm, "L") != 0) 
+			{
+				//finish_prev = annot.time;
+				flagBegin = -1;	// previous L-region efinished, the new one is beginning
+			}
 
 		//sql = malloc(500);
 		//sprintf(sql, "SELECT BeatType_id FROM BeatType WHERE beat_type = ?");

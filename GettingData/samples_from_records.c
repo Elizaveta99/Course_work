@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
 	if (isigopen(argv[1], s, nsig) != nsig)
 		exit(1);
 	v = (WFDB_Sample *)malloc(nsig * sizeof(WFDB_Sample));
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < 360*3; i++) {
 		if (getvec(v) < 0)
 			break;
 		for (j = 0; j < nsig; j++)
@@ -62,10 +62,15 @@ int main(int argc, char * argv[])
 	int cnt = 0, cntN = 0;
 	while (getann(0, &annot) == 0) // читаю очередную аннот из файла аннот
 	{
+		//printf("annot.aux = %s!\n beat_type = %s\n sample(time) = %d\n", annot.aux, annstr(annot.anntyp), annot.time);
+//		printf("annot.aux = %s!\n beat_type = %s\n sample(time) = %s\n", annot.aux, annstr(annot.anntyp), mstimstr(annot.time));
+
 		cnt++;
-		if (strcmp(annstr(annot.anntyp), "N") != 0)
+		if (strcmp(annstr(annot.anntyp), "L") == 0)
 		{
 			cntN++;
+			printf("annot.aux = %s!\n beat_type = %s\n sample(time) = %d, time(in ms) = %s\n", annot.aux, annstr(annot.anntyp), annot.time, mstimstr(annot.time));
+
 		}
 
 		//printf("%s %s\n", mstimstr(annot.time), annstr(annot.anntyp));

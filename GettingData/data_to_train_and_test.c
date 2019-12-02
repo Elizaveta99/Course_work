@@ -20,7 +20,7 @@ int rc;
 sqlite3_stmt *res;
 
 int* data;
-int record_id = 40;
+int record_id = 49;
 
 static void select_region_samples(int region_type, char* file_name)
 {

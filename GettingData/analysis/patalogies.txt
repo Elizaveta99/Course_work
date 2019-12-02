@@ -1,16 +1,15 @@
-102(3), 104(6), 107(9), 217(38) - почти всё P, f биты - выкинуть; 
+102(3), 104(6), 107(9), 217(38) - P, f beats - throw out; 
 
 115(16), 122(22) - only N beats, N rhythms
 
-оставить только те ритмы из битов, где run of beats есть, isolated не надо? 
-	(i - isolated; c - in couplet, r - in urn)
-A, V - выкинуть, где не последовательно? (или только А, их меньше?)
+i - isolated; c - in couplet, r - in run
+A, V - throw out
 
-ритмы (+ ритмы из битов)
+rhythms(+ rhythms from beats)
 
-data - means that dataset is from thess records 
+data - means that dataset is from these records 
 first - means that these regions exists in first 15 minutes
-last - in last 15 min
+last - in last 15 minutes
 
 only (N : 100(1), 101(2), 103(5), 112(13), 113(14), 115(16), 117(18), 121(21), 122(22), 123(23)	
 105(7) -  (N(1), (V beats(PVC)(18) - i, 
@@ -43,7 +42,7 @@ data 222(42) - (N(1), (AB(5), (SVTA(6), (AFL(7), (AFIB(8), (NOD(10), (A(19) - i,
 data 223(43) - (N(1), (B(11), (T(12), (VT(14), (A(19) - i, c, (V(18) - i, c, r
 data 228(44) - (N(1), (B(11), (V(18) - i, c, (A(19) - i
 230(45) - (N(1), (PREX(4) - ?(только 1)
-data 231(46) - (N(1), (RBBB(17), (BII(3) - ?(только 1), (V(18) - c
+data 231(46) - (RBBB(17), (BII(3) - ?(только 1), (V(18) - c
 data 232(47) - (RBBB(17) , (A(19) - i, c, r, (SBR(2)
 data 233(48) - (N(1), (B(11), (T(12), (VT(14), (A(19) - i, (V(18) - i, c, r
 data 234(49) - (N(1), (SVTA(6), (V(18) - i, (J(21)
@@ -59,8 +58,8 @@ classes : 1 - N(Normal sinus rhythm)
 	  9 - AFL(Atrial flutter)
 	  10 - NOD(Nodal (A-V junctional) rhythm)
 	  11 - IVR(Idioventricular rhythm)
+	  12 - V(Premature ventricular contraction) - PVC
 // ??
-	  12 - A(Atrial premature beat) - APC
-	  13 - V(Premature ventricular contraction) - PVC
+	  13 - A(Atrial premature beat) - APC
 	  14 - j(Nodal (junctional) escape beat) - NESC
 	  15 - J(Nodal (junctional) premature beat) - NPC

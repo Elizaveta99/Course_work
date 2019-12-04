@@ -1,5 +1,5 @@
 # ECG analysis using an experimental classifier of pathologies based on the convolutional neural network<br>
-###Building<br>
+### Building<br>
 <ol>
 <li>Install and run jupyter notebook
   <ul>
@@ -23,6 +23,6 @@
 </ol>
 <br>
 **In all files change base_path to the place where the project is stored**<br><br>
-###Information<br>
+### Information<br>
 *Data extraction(received database), analysis, building dataset - in data_analysis branch*<br>
 

@@ -22,7 +22,7 @@
 <li>For testing on pretrained weights run <strong>testing.ipynb</strong></li>
 </ol>
 <br>
-<strong>In all files change base_path to the place where the project is stored</strong><br><br>
+<strong>In all files change <em>base_path</em> to the place where the project is stored</strong><br><br>
 
 ### Information<br>
 <em>Data extraction(received database), analysis, building dataset - in data_analysis branch</em><br>

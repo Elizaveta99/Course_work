@@ -18,11 +18,12 @@
     <li>keras.utils</li>
   </ul>
 </li>
-<li>For training run training.ipynb</li>
-<li>For testing on pretrained weights run testing.ipynb</li>
+<li>For training run <strong>training.ipynb</strong></li>
+<li>For testing on pretrained weights run <strong>testing.ipynb</strong></li>
 </ol>
 <br>
 <strong>In all files change base_path to the place where the project is stored</strong><br><br>
+
 ### Information<br>
 <em>Data extraction(received database), analysis, building dataset - in data_analysis branch</em><br>
 

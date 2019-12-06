@@ -1,0 +1,3 @@
+214(36) - (LBBB(16), (T(12) - patology 1, 4 (in classification types for model)
+124(24) - (RBBB(17), (T(12), (IVR(13), (V(18) - patology 2, 4, 10, 11
+207(30) - (LBBB(16), (SVTA(6), (B(11), (IVR(13) - patology 1, 6, 3, 10

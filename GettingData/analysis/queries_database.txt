@@ -1,0 +1,15 @@
+--1
+SELECT DISTINCT records_id, BeatType_id from Beats b WHERE b.BeatType_id IN(SELECT BeatType_id FROM BeatType) 
+
+--1.1
+SELECT records_id, BeatType_id, count(BeatType_id) from Beats b WHERE b.BeatType_id IN(SELECT BeatType_id FROM BeatType) GROUP BY b.BeatType_id
+
+SELECT records_id, BeatType_id, count(BeatType_id) from Beats b WHERE records_id IN(SELECT Records.id FROM Records) GROUP BY records_id ORDER BY BeatType_id
+
+-- wrong!
+
+
+
+100(1), 101(2), 103(5), 105(7), 108(10), 112(13), 113(14), 115(16), 117(18), 121(21), 122(22), 123(23) - 
+	почти полностью нормальные(большинство 'N', не > 35 'A' в каждой и не > 45 'V' в каждой)
+какие биты с какими битами(регионами?) вместе в записях чаще встречаются? 

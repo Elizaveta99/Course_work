@@ -1,0 +1,81 @@
+102(3), 104(6), 107(9), 217(38) - P, f beats - throw out; 
+
+115(16), 122(22) - only N beats, N rhythms
+
+i - isolated; c - in couplet, r - in run
+A, V - throw out
+
+rhythms(+ rhythms from beats)
+
+data - means that dataset is from these records 
+first - means that these regions exists in first 15 minutes
+last - in last 15 minutes
+
+only (N : 100(1), 101(2), 103(5), 112(13), 113(14), 115(16), 117(18), 121(21), 122(22), 123(23)	
+105(7) -  (N(1), (V beats(PVC)(18) - i, 
+data 106(8) -  (N(1) - first, (B(11) - first, (T(12), (VT(14), (V(18) - i, c, r
+108(10) - (N(1), (V(18) - i, c, (A(19) - i
+data 109(11) - (LBBB(L beats)(16), (V(18) -i
+data 111(12) - (LBBB(16)
+data 114(15) - (N(1) - first, (SVTA(6) - first, (V(18) - i, c, (J(21), (A(19) - i, r
+116(17) - (N(1), (V(18) - i, c
+data 118(19) - (RBBB(17), (A(19) - i, c, (V(18) - i 
+data 119(20) - (N(1), (V(18) - i, (B(11), (T(12)
+data 124(24) - (RBBB(17), (T(12), (IVR(13), (NOD(10), (V(18) - i, r, (A(19) - i, r, (j(20), (J(21)
+data 200(25) - (N(1), (B(11), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+data 201(26) - (N(1), (SVTA(6), (AFIB(8), (NOD(10), (T(12), (A(19) - i, c, r, (V(18) - i, (j(20), (J(21)
+data 202(27) - (N(1), (AFL(7), (AFIB(8), (A(19) - i, c, r, (V(18) - i
+data 203(28) - (N(1), (AFL(7), (AFIB(8), (T(12), (VT(14), (A(19) - i, (V(18) - i, c, r
+data 205(29) - (N(1), (VT(14), (A(19) - i, (V(18) - i, r
+data 207(30) - (LBBB(16), (RBBB(17) - only isolated, (SVTA(6), (B(11), (IVR(13), (VT(14), (VFL(15) - ?(только 1), (A(19) - i, c, r, (V(18)- i, c, r
+data 208(31) - (N(1), (T(12), (V(18) - i, c, r, (A(19) - i
+data 209(32) - (N(1), (SVTA(6), (A(19) - i, c, r
+data 210(33) - (AFIB(8), (B(11), (T(12), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+data 212(34) - (RBBB(17)
+data 213(35) - (N(1), (B(11), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+data 214(36) - (LBBB(16), (T(12), (VT(14), (V(18) - i, c, r
+data 215(37) - (N(1), (VT(14), (V(18) - i, c, r, (A(19) - i
+data 219(39) - (N(1), (AFIB(8), (B(11), (T(12), (A(19) - i, (V(18) - i
+data 220(40) - (N(1), (SVTA(6), (A(19) - i, c, r
+data 221(41) - (AFIB(8), (B(11), (T(12), (VT(14), (V(18) - i, c, r
+data 222(42) - (N(1), (AB(5), (SVTA(6), (AFL(7), (AFIB(8), (NOD(10), (A(19) - i, c, r, (j(20), (J(21)
+data 223(43) - (N(1), (B(11), (T(12), (VT(14), (A(19) - i, c, (V(18) - i, c, r
+data 228(44) - (N(1), (B(11), (V(18) - i, c, (A(19) - i
+230(45) - (N(1), (PREX(4) - ?(только 1)
+data 231(46) - (RBBB(17), (BII(3) - ?(только 1), (V(18) - c
+data 232(47) - (RBBB(17) , (A(19) - i, c, r, (SBR(2)
+data 233(48) - (N(1), (B(11), (T(12), (VT(14), (A(19) - i, (V(18) - i, c, r
+data 234(49) - (N(1), (SVTA(6), (V(18) - i, (J(21)
+
+classes : 0 - N(Normal sinus rhythm)
+	  1 - LBBB(Normal sinus rhythm with left bundle branch block)
+ 	  2 - RBBB(Normal sinus rhythm with right bundle branch block)
+	  3 - B(Ventricular bigeminy)
+	  4 - T(Ventricular trigeminy)
+	  5 - VT(Ventricular tachycardia)
+	  6 - SVTA(Supraventricular tachyarrhythmia)
+	  7 - AFIB(Atrial fibrillation)
+	  8 - AFL(Atrial flutter)
+	  9 - NOD(Nodal (A-V junctional) rhythm)
+	  10 - IVR(Idioventricular rhythm)
+	  11 - V(Premature ventricular contraction) - PVC
+// ??
+	  13 - A(Atrial premature beat) - APC
+	  14 - j(Nodal (junctional) escape beat) - NESC
+	  15 - J(Nodal (junctional) premature beat) - NPC
+
+
+predict_path = os.path.join(base_path, 'data_files_predict')
+
+class_name = '214'
+path_predict = os.path.join(predict_path, class_name)
+
+X_pred = np.fromfile(path_predict, dtype=int, count=-1, sep=' ', offset=0)
+X_predict = np.asarray(X_pred)
+X_predict = X_predict.astype("float32")
+
+XX_predict = feature_normalize(X_predict)
+
+Y_predict = model_test.predict_proba(XX_predict)
+
+print(Y_predict)

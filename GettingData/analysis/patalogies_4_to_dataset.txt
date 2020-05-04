@@ -1,0 +1,67 @@
+N - 1
+AFIB - 8
+RBBB - 17
+V(PVC) - 18
+B(Ventricular bigeminy) - 11
+
+1 is in records:
+1(649800), 2(649440), 5(649800), 7(649440), 8(486720), 10(649440), 13(649800), 14(649800), 15(647640), 16(649800),
+17(649800), 18(649800), 20(481680), 21(649800), 22(649800), 23(649440), 25(338400), 26(277200), 27(421200),
+29(640800), 31(530280), 32(612000), 35(623880), 37(480600), 39(128160), 40(642960), 42(340560), 43(502560), 
+44(516600), 45(362520), 48(603360), 49(640080)
+
+8 is in records:
+26(217440), 27(210600), 28(520920), 33(636120), 39(509040), 41(630720), 42(36000)
+
+17 is in records:
+19(584280), 24(607680), 34(422640), 46(389160), 47(73440)
+
+18 is in records:
+24(9720), 25(11520), 28(14040), 29(6840), 30(1080), 31(32040), 33(3960), 35(1080), 36(2160), 37(1800), 41(1440), 43(42480), 48(9360)
+
+11 is in records:(579600)
+8(152640), 20(76320), 25(288360), 30(56520), 33(7920), 35(18720), 38(14400), 39(2520), 41(1080), 43(92160), 44(121320), 48(36000)
+
+train:
+1 - 39(128160), 42(340560), 25(338400)
+8 - 39(509040), 42(36000), 
+17 - 34(422640), 47(73440)
+11 - 39(2520), 25(288360), 43(92160), 44(121320)
+
+test:
+1 - 26(277200), 27(421200)      // v
+8 -  27(210600), 28(520920)
+17 - 24(607680)
+11 - 20(76320), 30(56520), 33(7920), 35(18720), 38(14400), 48(36000)
+
+validation:
+8 (1, 11)
+41 (8, 11)
+19 (17)
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>Car Rental Application</display-name>
+    <servlet>
+        <display-name>MainServlet</display-name>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>Controller.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/serv</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>serv</welcome-file>
+    </welcome-file-list>
+
+</web-app>

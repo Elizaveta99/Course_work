@@ -1,0 +1,9 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=6116949C
+eax=0047B0BE ebx=00000000 ecx=0047B0BF edx=006BCC23 esi=612D5FF2 edi=0000006C
+ebp=006BCC68 esp=006BCBE0 program=C:\cygwin\home\User\1studing\wfdb\GettingData\GettingData\ecg_records_to_local_db.exe, pid 1151, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+006BCC68  6116949C (00000002, 006BCC8C, 800000D0, 6100AA98)
+006BCD18  6100AAFA (00000000, 006BCD74, 61009A90, 00000000)
+End of stack trace

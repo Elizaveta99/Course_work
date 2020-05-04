@@ -1,0 +1,8 @@
+Exception: STATUS_PRIVILEGED_INSTRUCTION at eip=612DAA4C
+eax=612981E0 ebx=006BCC58 ecx=80000008 edx=6100AA98 esi=806BCC38 edi=800000D0
+ebp=006BD51C esp=006B8C8C program=C:\cygwin\home\User\1studing\wfdb\GettingData\GettingData\data_to_train_4.exe, pid 1065, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+006BD51C  612DAA4C (611DD000, 611DD070, 00000000, 00000000)
+End of stack trace

@@ -1,6 +1,103 @@
 ﻿@{
     ViewData["Title"] = "Ok";
 }
+<html>
+<head>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/js/Chart.js"></script>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/css/Chart.css" rel="stylesheet" />*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="chartWrapper" style="height: 420px; width: 800px; overflow-x:auto; position:relative;">
+        <div id="chartContainer" style="height: 400px; width: 9000px;"></div>
+    </div>
+    <div id="patologies">
+        <ul>
+            <li style="display: inline;">Normal sinus rhythm:&nbsp @Html.Raw(Json.Serialize(ViewBag.N)) &nbsp&nbsp&nbsp</li>
+            <li style="display: inline;">Normal sinus rhythm with right bundle branch block:&nbsp @Html.Raw(Json.Serialize(ViewBag.RBBB)) &nbsp&nbsp&nbsp</li>
+        </ul>
+        <ul>
+            <li style="display: inline;">Atrial fibrillation:&nbsp @Html.Raw(Json.Serialize(ViewBag.AFIB)) &nbsp&nbsp&nbsp</li>
+            <li style="display: inline;">Ventricular bigeminy:&nbsp @Html.Raw(Json.Serialize(ViewBag.B)) &nbsp&nbsp&nbsp</li>
+        </ul>
+    </div>
 
-<h1>Ok</h1>
+    <script>
 
+        var xAxisStripLinesArray = [];
+        var yAxisStripLinesArray = [];
+        var dps = [];
+
+        var dataPointsArray = @Html.Raw(Json.Serialize(ViewBag.VALUES));
+        var results_temp = @Html.Raw(Json.Serialize(ViewBag.RESULT));
+
+        var chart = new CanvasJS.Chart("chartContainer",
+            {
+                zoomEnabled: true,
+                title: {
+                    text: "ECG Report",
+                },
+                subtitles: [{
+                    text: "ECG Report",
+                    horizontalAlign: "left",
+                },
+                {
+                    text: "Duration: 30 min ",
+                    horizontalAlign: "left",
+                },
+                ],
+                axisY: {
+                    stripLines: yAxisStripLinesArray,
+                    gridThickness: 2,
+                    gridColor: "#DC74A5",
+                    lineColor: "#DC74A5",
+                    tickColor: "#DC74A5",
+                    labelFontColor: "#DC74A5",
+                },
+                axisX: {
+                    stripLines: xAxisStripLinesArray,
+                    gridThickness: 2,
+                    gridColor: "#DC74A5",
+                    lineColor: "#DC74A5",
+                    tickColor: "#DC74A5",
+                    labelFontColor: "#DC74A5",
+                },
+                data: [
+                    {
+                        //type: "spline",
+                        type: "line",
+                        color: "black",
+                        dataPoints: dps
+                    }
+                ]
+            });
+
+        addDataPointsAndStripLines();
+        chart.render();
+
+        function addDataPointsAndStripLines() {
+            //dataPoints
+            for (var i = 0; i < dataPointsArray.length; i += 100)
+            {
+                dps.push({x: i * 1, y: dataPointsArray[i] });
+            }
+            //StripLines
+            for (var i = 0; i < 3000; i = i + 100) {
+                if (i % 1000 != 0)
+                    yAxisStripLinesArray.push({ value: i, thickness: 0.7, color: "#DC74A5" });
+            }
+            for (var i = 0; i < dataPointsArray.length; i = i + 100)
+            {
+                if (i % 200 != 0)
+                    xAxisStripLinesArray.push({ value: i, thickness: 0.7, color: "#DC74A5" });
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -11,13 +11,16 @@ using System.Text.RegularExpressions;
 using System.Collections;
 using System.Security.Cryptography.Xml;
 
+using System.Web;
+
+
 namespace EcgApp.Controllers
 {
     public class ChooseEcgRecordController : Controller
     {
-        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IWebHostEnvironment hostingEnvironment;
 
-        public ChooseEcgRecordController(IHostingEnvironment hostingEnvironment)
+        public ChooseEcgRecordController(IWebHostEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
         }
@@ -29,9 +32,7 @@ namespace EcgApp.Controllers
         }
 
         [HttpPost]
-        //public string Ok(RecordViewModel model)
         public IActionResult Ok(RecordViewModel model)
-        //public async void Ok(RecordViewModel model)
         {
             string uniqueFileName = null;
             string filePath = null;
@@ -69,11 +70,8 @@ namespace EcgApp.Controllers
             {
                 errors = process.StandardError.ReadToEnd();
                 results = process.StandardOutput.ReadToEnd();
-                Console.WriteLine(results);
+                //Console.WriteLine(results);
             }
-
-            //display output
-            //return arg + " " + results;
 
             string data = null;
             using (var reader = new StreamReader(model.RecordFile.OpenReadStream()))
@@ -82,8 +80,6 @@ namespace EcgApp.Controllers
                     data += reader.ReadLine();
                 //data = reader.ReadToEnd();
             }
-
-            //var listValues = Array.ConvertAll(data.Split(' ', '\n', '\r'), int.Parse);
 
             List<int> listValues = new List<int>();
 
@@ -101,8 +97,6 @@ namespace EcgApp.Controllers
             ViewBag.RESULT = results;
 
             string[] allResults = results.Split(' ');
-            //string resN = "";
-            //resN = results.Substring(2, 1);
             string resN = allResults[2] + "%";
             string resRBBB = allResults[4] + "%";
             string resB = allResults[6] + "%";
@@ -112,7 +106,41 @@ namespace EcgApp.Controllers
             ViewBag.RBBB = resRBBB;
             ViewBag.B = resB;
             ViewBag.AFIB = resAFIB;
-            //+ передавать в виде строки или файла массив начал, концов и типов патологий для выделения цветом на графике
+
+
+            string lineFromFile = "";
+            FileStream fileStream = new FileStream(@"C:\Users\Professional\Desktop\1studing\CourseWork3\course_work_app\Course_work\cnn_code_4_classes\EcgApp\EcgApp\App_Data\sectorsFile.txt", FileMode.Open);
+            using (StreamReader reader = new StreamReader(fileStream))
+            {
+                lineFromFile = reader.ReadLine();
+            }
+
+            string[] allSectors = lineFromFile.Split(';');
+            List<string> listN = new List<string>();
+            List<string> listRBBB = new List<string>();
+            List<string> listB = new List<string>();
+            List<string> listAFIB = new List<string>();
+            for (int i = 0; i < allSectors.Length - 1; i++)
+            {
+                string[] val = allSectors[i].Split(':');
+                if (val[2] == "0")
+                    listN.Add(val[0] + ", " + val[1] + ";");
+                else
+                    if (val[2] == "1")
+                    listRBBB.Add(val[0] + ", " + val[1] + ";");
+                else
+                    if (val[2] == "2")
+                    listB.Add(val[0] + ", " + val[1] + ";");
+                else
+                    if (val[2] == "3")
+                    listAFIB.Add(val[0] + ", " + val[1] + ";");
+
+            }
+
+            ViewBag.listN = listN;
+            ViewBag.listRBBB = listRBBB;
+            ViewBag.listB = listB;
+            ViewBag.listAFIB = listAFIB;
 
             return View();
 

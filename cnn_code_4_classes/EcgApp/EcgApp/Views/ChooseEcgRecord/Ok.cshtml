@@ -13,17 +13,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 <body>
-    <div class="chartWrapper" style="height: 420px; width: 800px; overflow-x:auto; position:relative;">
-        <div id="chartContainer" style="height: 400px; width: 9000px;"></div>
+    <div style="float:right;">
+        <div class="btn-group" style="width:100%">
+            <button OnClick="a();" style="width:25%">N</button>
+            <button OnClick="b();" style="width:25%">RBBB</button>
+            <button OnClick="c();" style="width:25%">B</button>
+            <button OnClick="d();" style="width:25%">AFIB</button>
+        </div>
+
+        <div class="sectorsWrapper" style="height: 400px; width: 300px; overflow-x:auto; ">
+            <div id="sectors" style="float:initial; height: 400px; width: 100px;">
+                @*@Html.Raw(Json.Serialize(ViewBag.listB))*@
+            </div>
+        </div>
     </div>
+    <div class="chartWrapper" style="height: 400px; width: 800px; overflow-x:auto; position:relative;">
+        <div id="chartContainer" style="height: 380px; width: 9000px;"></div>
+    </div>
+
     <div id="patologies">
         <ul>
             <li style="display: inline;">Normal sinus rhythm:&nbsp @Html.Raw(Json.Serialize(ViewBag.N)) &nbsp&nbsp&nbsp</li>
             <li style="display: inline;">Normal sinus rhythm with right bundle branch block:&nbsp @Html.Raw(Json.Serialize(ViewBag.RBBB)) &nbsp&nbsp&nbsp</li>
         </ul>
         <ul>
-            <li style="display: inline;">Atrial fibrillation:&nbsp @Html.Raw(Json.Serialize(ViewBag.AFIB)) &nbsp&nbsp&nbsp</li>
             <li style="display: inline;">Ventricular bigeminy:&nbsp @Html.Raw(Json.Serialize(ViewBag.B)) &nbsp&nbsp&nbsp</li>
+            <li style="display: inline;">Atrial fibrillation:&nbsp @Html.Raw(Json.Serialize(ViewBag.AFIB)) &nbsp&nbsp&nbsp</li>
         </ul>
     </div>
 
@@ -97,6 +112,13 @@
                     xAxisStripLinesArray.push({ value: i, thickness: 0.7, color: "#DC74A5" });
             }
         }
+
+
+        function a() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listN)); }
+        function b() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listRBBB)); }
+        function c() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listB)); }
+        function d() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listAFIB)); }
+
 
     </script>
 </body>

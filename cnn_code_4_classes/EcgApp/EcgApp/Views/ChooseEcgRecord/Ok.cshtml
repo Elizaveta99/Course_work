@@ -3,11 +3,6 @@
 }
 <html>
 <head>
-    @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/js/Chart.js"></script>
-        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-        <link href="~/css/Chart.css" rel="stylesheet" />*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -15,15 +10,21 @@
 <body>
     <div style="float:right;">
         <div class="btn-group" style="width:100%">
-            <button OnClick="a();" style="width:25%">N</button>
-            <button OnClick="b();" style="width:25%">RBBB</button>
-            <button OnClick="c();" style="width:25%">B</button>
-            <button OnClick="d();" style="width:25%">AFIB</button>
+            <button OnClick="buttonN();" style="width:25%">N</button>
+            <button OnClick="buttonRBBB();" style="width:25%">RBBB</button>
+            <button OnClick="buttonB();" style="width:25%">B</button>
+            <button OnClick="buttonAFIB();" style="width:25%">AFIB</button>
         </div>
 
         <div class="sectorsWrapper" style="height: 400px; width: 300px; overflow-x:auto; ">
             <div id="sectors" style="float:initial; height: 400px; width: 100px;">
-                @*@Html.Raw(Json.Serialize(ViewBag.listB))*@
+                <table border='1' id="mytable" style="width: 280px;">
+                    <thead style="width: 280px;">
+                        <tr>Pathology coordinates</tr>
+                    </thead>
+                    <tbody id="tb0">
+                    </tbody>               
+                </table>
             </div>
         </div>
     </div>
@@ -113,12 +114,73 @@
             }
         }
 
+        var listN = @Html.Raw(Json.Serialize(ViewBag.listN));
+        var listRBBB = @Html.Raw(Json.Serialize(ViewBag.listRBBB));
+        var listB = @Html.Raw(Json.Serialize(ViewBag.listB));
+        var listAFIB = @Html.Raw(Json.Serialize(ViewBag.listAFIB));
 
-        function a() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listN)); }
-        function b() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listRBBB)); }
-        function c() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listB)); }
-        function d() { document.getElementById('sectors').innerHTML = @Html.Raw(Json.Serialize(ViewBag.listAFIB)); }
+        function buttonN()
+        {        
+            var tabBody = document.getElementById("tb0");  
+            $("tbody").children().remove();
 
+                for (var i = 0; i < listN.length; i++) {
+                    row = document.createElement("tr");
+                    cell = document.createElement("td");
+                    textnode = document.createTextNode(listN[i]);
+                    cell.appendChild(textnode);
+                    row.appendChild(cell);
+                    tabBody.appendChild(row);
+                }
+        }
+
+        function buttonRBBB()
+        {
+           
+            var tabBody = document.getElementById("tb0");
+            $("tbody").children().remove();
+
+                for (var i = 0; i < listRBBB.length; i++) {
+                    row = document.createElement("tr");
+                    cell = document.createElement("td");
+                    textnode = document.createTextNode(listRBBB[i]);
+                    cell.appendChild(textnode);
+                    row.appendChild(cell);
+                    tabBody.appendChild(row);
+                }
+        }
+
+        function buttonB()
+        {
+          
+            var tabBody = document.getElementById("tb0");
+            $("tbody").children().remove();
+
+                for (var i = 0; i < listB.length; i++) {
+                    row = document.createElement("tr");
+                    cell = document.createElement("td");
+                    textnode = document.createTextNode(listB[i]);
+                    cell.appendChild(textnode);
+                    row.appendChild(cell);
+                    tabBody.appendChild(row);
+                }
+        }
+
+        function buttonAFIB()
+        {
+           
+            var tabBody = document.getElementById("tb0"); 
+            $("tbody").children().remove();
+
+                for (var i = 0; i < listAFIB.length; i++) {
+                    row = document.createElement("tr");
+                    cell = document.createElement("td");
+                    textnode = document.createTextNode(listAFIB[i]);
+                    cell.appendChild(textnode);
+                    row.appendChild(cell);
+                    tabBody.appendChild(row);
+                }
+        }
 
     </script>
 </body>

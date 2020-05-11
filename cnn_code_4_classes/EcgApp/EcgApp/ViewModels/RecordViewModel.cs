@@ -14,12 +14,12 @@ namespace EcgApp.ViewModels
         public IFormFile RecordFile { get; set; }
 
         [Required]
-        public string TypeN { get; set; }
+        public List<string> TypeN { get; set; }
         [Required]
-        public string TypeRBBB { get; set; }
+        public List<string> TypeRBBB { get; set; }
         [Required]
-        public string TypeAFIB { get; set; }
+        public List<string> TypeAFIB { get; set; }
         [Required]
-        public string TypeB { get; set; }
+        public List<string> TypeB { get; set; }
     }
 }

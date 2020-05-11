@@ -137,6 +137,11 @@ namespace EcgApp.Controllers
 
             }
 
+            model.TypeN = listN;
+            model.TypeRBBB = listRBBB;
+            model.TypeB = listB;
+            model.TypeAFIB = listAFIB;
+
             ViewBag.listN = listN;
             ViewBag.listRBBB = listRBBB;
             ViewBag.listB = listB;

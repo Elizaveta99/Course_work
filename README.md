@@ -1,5 +1,4 @@
 # ECG analysis using an experimental classifier of pathologies based on the convolutional neural network<br>
-## Part 2
  - [Код обучения сети](https://github.com/Elizaveta99/Course_work/blob/master/cnn_code_4_classes/training_4.ipynb)
  - [Код тестирования сети](https://github.com/Elizaveta99/Course_work/blob/master/cnn_code_4_classes/testing_4.ipynb)
  - [Код классификации](https://github.com/Elizaveta99/Course_work/blob/master/cnn_code_4_classes/predicting_4.py) - запускается из приложения. В качестве результата выводит строку с распределением вероятностей по классам патологий, а также записывает в файл координаты этих патологий на графике.

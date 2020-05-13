@@ -94,7 +94,7 @@ namespace EcgApp.Controllers
             }
 
             ViewBag.VALUES = listValues;
-            ViewBag.RESULT = results;
+            ViewBag.RESULT = model.RecordFile.FileName;
 
             string[] allResults = results.Split(' ');
             string resN = allResults[2] + "%";

@@ -32,8 +32,8 @@ def feature_normalize(dataset):
 
 def main(class_name):
     base_path = 'C:\\Users\\Professional\\Desktop\\1studing\\CourseWork3\\course_work_app\\Course_work\\cnn_code_4_classes'
-    model_save_path = os.path.join(base_path, 'model_temp\\cnn_model.h5')
-    model_weights_path = os.path.join(base_path, 'model_temp\\cnn_model_weights.hdf5')
+    model_save_path = os.path.join(base_path, 'model\\cnn_model.h5')
+    model_weights_path = os.path.join(base_path, 'model\\cnn_model_weights.hdf5')
     predict_path = os.path.join(base_path, 'data_files_predict_4')
     
     #class_name = '221'
